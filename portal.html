@@ -1,0 +1,155 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worker Portal - Samzen Company</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(135deg, #e7edf8 0%, #1f7bfd 100%);
+            margin: auto;
+            max-width: 600px;
+            padding: 20px;
+            border: 1px solid darkslategray;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .portal-container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            padding: 30px 24px;
+        }
+        h1 {
+            color: #007BFF;
+            text-align: center;
+        }
+        .welcome {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .info-section {
+            margin-bottom: 24px;
+        }
+        .info-section h2 {
+            color: #333;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 6px;
+            margin-bottom: 12px;
+        }
+        .info-list {
+            list-style: none;
+            padding: 0;
+        }
+        .info-list li {
+            margin-bottom: 8px;
+        }
+        .nav-links {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .nav-links a {
+            display: inline-block;
+            margin: 0 10px;
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover {
+            color: #0056b3;
+        }
+        .logout-btn {
+            display: block;
+            margin: 30px auto 0;
+            background: #dc3545;
+            color: #fff;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .logout-btn:hover {
+            background: #b52a37;
+        }
+    </style>
+</head>
+<body>
+    <div class="portal-container">
+        <h1>Samzen Company Limited</h1>
+        <div class="welcome">
+            <h2>Welcome, <span id="workerName">[Worker Name]</span>!</h2>
+            <p>This is your personal portal. Here you can view and manage your information.</p>
+        </div>
+        <div class="info-section">
+            <h2>Personal Information</h2>
+            <ul class="info-list">
+                <li><strong>Full Name:</strong> <span id="fullName"></span></li>
+                <li><strong>Email:</strong> <span id="email"></span></li>
+                <li><strong>Contact Number:</strong> <span id="contact"></span></li>
+                <li><strong>Gender:</strong> <span id="gender"></span></li>
+                <li><strong>Date of Birth:</strong> <span id="dob"></span></li>
+            </ul>
+        </div>
+        <div class="info-section">
+            <h2>Employment Details</h2>
+            <ul class="info-list">
+                <li><strong>Job Title:</strong> <span id="jobTitle"></span></li>
+                <li><strong>Department:</strong> <span id="department"></span></li>
+                <li><strong>Employment Type:</strong> <span id="employmentType"></span></li>
+                <li><strong>Date of Employment:</strong> <span id="employmentDate"></span></li>
+                <li><strong>Supervisor:</strong> <span id="supervisor"></span></li>
+            </ul>
+        </div>
+        <div class="nav-links">
+            <a href="#">Update Profile</a>
+            <a href="#">View Payslips</a>
+            <a href="#">Request Leave</a>
+            <!-- Add more links as needed -->
+        </div>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+    <script>
+        // Example: Populate portal with stored registration info (for demo)
+        document.getElementById('workerName').textContent = localStorage.getItem('worker_username') || '[Worker Name]';
+        document.getElementById('fullName').textContent = localStorage.getItem('fullname') || '';
+        document.getElementById('email').textContent = localStorage.getItem('email') || '';
+        document.getElementById('contact').textContent = localStorage.getItem('contact') || '';
+        document.getElementById('gender').textContent = localStorage.getItem('gender') || '';
+        document.getElementById('dob').textContent = localStorage.getItem('dob') || '';
+        document.getElementById('jobTitle').textContent = localStorage.getItem('jobtitle') || '';
+        document.getElementById('department').textContent = localStorage.getItem('department') || '';
+        document.getElementById('employmentType').textContent = localStorage.getItem('employmenttype') || '';
+        document.getElementById('employmentDate').textContent = localStorage.getItem('employmentdate') || '';
+        document.getElementById('supervisor').textContent = localStorage.getItem('supervisor') || '';
+
+        function logout() {
+            // Optionally clear localStorage or redirect to login
+            window.location.href = "log.html";
+        }
+        const user = JSON.parse(localStorage.getItem('current_user'));
+if (!user) {
+    window.location.href = 'log.html';
+}
+// Use user.fullname, user.email, etc. to display info
+        document.getElementById('fullName').textContent = user.fullname || '';
+        document.getElementById('email').textContent = user.email || '';
+        document.getElementById('contact').textContent = user.contact || '';
+        document.getElementById('gender').textContent = user.gender || '';
+        document.getElementById('dob').textContent = user.dob || '';
+        document.getElementById('jobTitle').textContent = user.jobtitle || '';
+        document.getElementById('department').textContent = user.department || '';
+        document.getElementById('employmentType').textContent = user.employmenttype || '';
+        document.getElementById('employmentDate').textContent = user.employmentdate || '';
+        document.getElementById('supervisor').textContent = user.supervisor || '';
+
+    </script>
+</body>
+</html>

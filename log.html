@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>LogIn</title>
+      <link rel="stylesheet" href="log.css">
+    </head>
+    <body>
+        <h1>WELCOME TO SAMZEN COMPANY LIMITED</h1>
+        <h2>WORKERS PORTAL</h2>
+        <form id="loginForm">
+            <input type="text" name="username" id="username" placeholder="Username" required><br><br>
+            <input type="password" name="password" id="password" placeholder="Password" required><br><br>
+            <input type="checkbox" name="show-password" id="show-password" onclick="togglePassword()"> Show Password
+            <input type="checkbox" name="remember" id="remember">
+            <label for="remember">Remember Me</label><br><br>
+            <button type="submit">LogIn</button>
+            <a href="forget.html">Forgot Password?</a><br><br>
+            <p>Don't have an account? <a href="register.html">Register here</a></p>
+        </form>
+        <footer>
+            <p>&copy; 2025 Samzen Company</p>
+        </footer>
+        <script>
+    function togglePassword() {
+        var pwd = document.getElementById("password");
+        pwd.type = (pwd.type === "password") ? "text" : "password";
+    }
+
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        var username = document.getElementById('username').value.trim().toLowerCase();
+        var password = document.getElementById('password').value;
+        var users = JSON.parse(localStorage.getItem('users')) || [];
+        var user = users.find(u => u.username === username && u.password === password);
+        if (user) {
+            localStorage.setItem('current_user', JSON.stringify(user));
+            window.location.href = "portal.html";
+        } else {
+            alert("Invalid username or password!");
+        }
+    });
+</script>
+    </body>
+</html>

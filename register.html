@@ -1,0 +1,285 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workers' Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(135deg, #e7edf8 0%, #1f7bfd 100%);
+            margin: auto;
+            max-width: 600px;
+            padding: 20px;
+            border-radius: 2px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        form {
+            background: rgb(255, 255, 255);
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 800px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            background-color: #007BFF;
+            color: white;
+            padding: 10px;
+            border-radius: 6px;
+        }
+        fieldset {
+            border: 1px solid #ddd;
+            margin-bottom: 15px;
+            padding: 15px;
+            border-radius: 6px;
+        }
+        legend {
+            font-weight: bold;
+        }
+        label {
+            display: block;
+            margin-top: 8px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 4px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<form id="registrationForm">
+    <h2>Workers' Registration Form</h2>
+
+    <!-- Personal Information -->
+    <fieldset>
+        <legend>Personal Information</legend>
+        <label>Full Name:
+            <input type="text" name="fullname" required>
+        </label>
+        <label>Date of Birth:
+            <input type="date" name="dob" required>
+        </label>
+        <label>Gender:
+            <select name="gender" required>
+                <option value="">--Select--</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+            </select>
+        </label>
+        <label>Nationality:
+            <input type="text" name="nationality">
+        </label>
+        <label>Contact Number:
+            <input type="tel" name="contact" required>
+        </label>
+        <label>Email Address:
+            <input type="email" name="email">
+        </label>
+        <label>Residential Address:
+            <textarea name="address" rows="2"></textarea>
+        </label>
+        <label>National ID / Passport Number:
+            <input type="text" name="idnumber">
+        </label>
+    </fieldset>
+
+    <!-- Employment Information -->
+    <fieldset>
+        <legend>Employment Information</legend>
+        <label>Job Title / Position:
+            <input type="text" name="jobtitle">
+        </label>
+        <label>Department:
+            <input type="text" name="department">
+        </label>
+        <label>Employment Type:
+            <select name="employmenttype">
+                <option value="">--Select--</option>
+                <option>Full-time</option>
+                <option>Part-time</option>
+                <option>Contract</option>
+                <option>Temporary</option>
+            </select>
+        </label>
+        <label>Date of Employment:
+            <input type="date" name="employmentdate">
+        </label>
+        <label>Supervisor / Manager:
+            <input type="text" name="supervisor">
+        </label>
+        <label>Work Location:
+            <input type="text" name="location">
+        </label>
+    </fieldset>
+
+    <!-- Skills & Qualifications -->
+    <fieldset>
+        <legend>Skills & Qualifications</legend>
+        <label>Highest Education Level:
+            <input type="text" name="education">
+        </label>
+        <label>Professional Certifications:
+            <textarea name="certifications" rows="2"></textarea>
+        </label>
+        <label>Relevant Skills:
+            <textarea name="skills" rows="2"></textarea>
+        </label>
+        <label>Years of Work Experience:
+            <input type="number" name="experience" min="0">
+        </label>
+    </fieldset>
+
+    <!-- Emergency Contact -->
+    <fieldset>
+        <legend>Emergency Contact</legend>
+        <label>Contact Person Name:
+            <input type="text" name="emergency_name">
+        </label>
+        <label>Relationship:
+            <input type="text" name="relationship">
+        </label>
+        <label>Contact Number:
+            <input type="tel" name="emergency_contact">
+        </label>
+        <label>Address:
+            <textarea name="emergency_address" rows="2"></textarea>
+        </label>
+    </fieldset>
+
+    <!-- Bank & Payment Details -->
+    <fieldset>
+        <legend>Bank & Payment Details</legend>
+        <label>Bank Name:
+            <input type="text" name="bankname">
+        </label>
+        <label>Account Name:
+            <input type="text" name="accountname">
+        </label>
+        <label>Account Number:
+            <input type="text" name="accountnumber">
+        </label>
+        <label>Payment Method:
+            <select name="paymentmethod">
+                <option value="">--Select--</option>
+                <option>Bank Transfer</option>
+                <option>Cash</option>
+                <option>Mobile Money</option>
+            </select>
+        </label>
+    </fieldset>
+
+    <!-- Declaration -->
+    <fieldset>
+        <legend>Declaration</legend>
+        <p>I hereby declare that the information provided above is true and accurate to the best of my knowledge.</p>
+        <label>Signature:
+            <input type="text" name="signature" placeholder="Type your name">
+        </label>
+        <label>Date:
+            <input type="date" name="signdate">
+        </label>
+    </fieldset>
+
+    <!-- Login Credentials -->
+    <fieldset>
+        <legend>Login Credentials</legend>
+        <label>Username:
+            <input type="text" name="username" id="username" required>
+        </label>
+        <label>Password:
+            <input type="password" name="password" id="password" required>
+        </label>
+    </fieldset>
+
+    <div style="text-align:center;">
+        <button type="submit">Submit Registration</button>
+    </div>
+    <p>
+        Already have an account? <a href="log.html">Login here</a>
+    </p>    
+</form>
+<script>
+    document.getElementById('registrationForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const form = e.target;
+
+        // Gather user data into an object
+        const user = {
+            username: form.username.value,
+            password: form.password.value,
+            fullname: form.fullname.value,
+            dob: form.dob.value,
+            gender: form.gender.value,
+            nationality: form.nationality.value,
+            contact: form.contact.value,
+            email: form.email.value,
+            address: form.address.value,
+            idnumber: form.idnumber.value,
+            jobtitle: form.jobtitle.value,
+            department: form.department.value,
+            employmenttype: form.employmenttype.value,
+            employmentdate: form.employmentdate.value,
+            supervisor: form.supervisor.value,
+            location: form.location.value,
+            education: form.education.value,
+            certifications: form.certifications.value,
+            skills: form.skills.value,
+            experience: form.experience.value,
+            emergency_name: form.emergency_name.value,
+            relationship: form.relationship.value,
+            emergency_contact: form.emergency_contact.value,
+            emergency_address: form.emergency_address.value,
+            bankname: form.bankname.value,
+            accountname: form.accountname.value,
+            accountnumber: form.accountnumber.value,
+            paymentmethod: form.paymentmethod.value,
+            signature: form.signature.value,
+            signdate: form.signdate.value
+        };
+
+        // Get existing users from localStorage or initialize as empty array
+        let users = JSON.parse(localStorage.getItem('users')) || [];
+
+        // Case-insensitive username check
+        if (users.some(u => u.username.toLowerCase() === user.username.trim().toLowerCase())) {
+            alert('Username already exists! Please choose another.');
+            return;
+        }
+        user.username = user.username.trim().toLowerCase();
+
+        // Add new user to array
+        users.push(user);
+
+        // Save back to localStorage
+        localStorage.setItem('users', JSON.stringify(users));
+
+        alert('Registration successful! You can now log in.');
+        window.location.href = 'log.html';
+    });
+</script>
+</body>
+</html>

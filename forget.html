@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgot Password</title>
+    <link rel="stylesheet" href="log.css">
+</head>
+<body>
+    <h1>Forgot Password</h1>
+    <form id="resetForm">
+        <label for="username">Enter your username:</label><br>
+        <input type="text" id="username" name="username" required><br><br>
+        <label for="newPassword">Enter new password:</label><br>
+        <input type="password" id="newPassword" name="newPassword" required><br><br>
+        <button type="submit">Reset Password</button>
+    </form>
+    <p><a href="log.html">Back to Login</a></p>
+    <script>
+        document.getElementById('resetForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var username = document.getElementById('username').value;
+    var newPassword = document.getElementById('newPassword').value;
+    var users = JSON.parse(localStorage.getItem('users')) || [];
+    var user = users.find(u => u.username === username);
+    if (user) {
+        user.password = newPassword;
+        localStorage.setItem('users', JSON.stringify(users));
+        alert('Password reset successful! You can now log in.');
+        window.location.href = 'log.html';
+    } else {
+        alert('Username not found!');
+    }
+});
+    </script>
+</body>
+</html>
