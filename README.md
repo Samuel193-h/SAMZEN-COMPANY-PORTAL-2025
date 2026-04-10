@@ -1,9 +1,16 @@
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-B09JG096L0"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+# SAMZEN  COMPANY PORTAL 2025
+##Description
+This project is a web-based company portal developed to improve my skills in web development.
 
-  gtag('config', 'G-B09JG096L0');
-</script>
+##Features
+-User login and registeration pages
+-Simple navigation system
+-Clean interface design
+
+## Technologies Used
+-HTML
+-CSS
+-JavaScript
+
+##Author
+Samuel Darko(SAMZEN)
